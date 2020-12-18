@@ -3,6 +3,7 @@ from SMWinservice import SMWinservice
 import mainCJF
 import utils as tool
 import sys
+log_Dir='C:\\Users\\1098350515\\Documents\\'
 
 class svcCJF(SMWinservice):
     _svc_name_ = "svcCJF_Excel"
@@ -16,14 +17,11 @@ class svcCJF(SMWinservice):
         self.isrunning = False
 
     def main(self):
-        tool.appendInfoToFile('C:\\','CJF_log.txt','Starting service...')
+        tool.writeLogAndConsole(log_Dir,'log_excelcjf.txt','Starting CJF excel service')
         try:
             mainCJF.maincjf()
         except:
-            tool.appendInfoToFile('C:\\','CJF_log.txt',str(sys.exc_info()[0]))
-            print(str(sys.exc_info()[0]))
-
-            
+            tool.writeLogAndConsole(log_Dir,'log_excelcjf.txt',str(sys.exc_info()[0]))          
 
 if __name__ == '__main__':
     svcCJF.parse_command_line()

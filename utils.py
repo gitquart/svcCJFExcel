@@ -10,6 +10,7 @@ import os
 import sys
 
 download_dir='C:\\Users\\1098350515\\Downloads'
+log_Dir='C:\\Users\\1098350515\\Documents\\'
 
 def devuelveElemento(xPath, browser):
     cEle=0
@@ -25,24 +26,33 @@ def appendInfoToFile(path,filename,strcontent):
     txtFile.write(strcontent+'\n')
     txtFile.close()
 
-def processRow(browser,strSearch,row):
-    pdfDownloaded=False
-    for col in range(1,8):
-        if col<7:
-            if col==1:
-                juris_rev=browser.find_elements_by_xpath('//*[@id="grdSentencias_ctl00__'+str(row)+'"]/td['+str(col)+']')[0].text
-            if col==2:
-                filetype=browser.find_elements_by_xpath('//*[@id="grdSentencias_ctl00__'+str(row)+'"]/td['+str(col)+']')[0].text
-            if col==3:
-                subject=browser.find_elements_by_xpath('//*[@id="grdSentencias_ctl00__'+str(row)+'"]/td['+str(col)+']')[0].text
-            if col==4:
-                fileNumber=browser.find_elements_by_xpath('//*[@id="grdSentencias_ctl00__'+str(row)+'"]/td['+str(col)+']')[0].text
-            if col==5:
-                #I remove (') because some text got it and cassandra failed to insert it
-                summary=summary=browser.find_elements_by_xpath('//*[@id="grdSentencias_ctl00__'+str(row)+'"]/td['+str(col)+']')[0].text
-                str(summary).replace("'"," ")
-            if col==6:
-                date=browser.find_elements_by_xpath('//*[@id="grdSentencias_ctl00__'+str(row)+'"]/td['+str(col)+']')[0].text                    
+def writeLogAndConsole(path,file,msg):
+    appendInfoToFile(path,file,msg)
+    print(msg)    
+
+def processRow(cRow,sheet):
+    for col in range(0,6):
+        #For row 0 and column 0
+        if col==0:
+            juris_rev=sheet.cell_value(cRow,col)
+            continue
+        if col==1:
+            filetype=sheet.cell_value(cRow,col)
+            continue
+        if col==2:
+            subject=sheet.cell_value(cRow,col)
+            continue
+        if col==3:
+            fileNumber=sheet.cell_value(cRow,col)
+            continue
+        if col==4:
+            #I remove (') because some text got it and cassandra failed to insert it
+            summary=summary=sheet.cell_value(cRow,col)
+            str(summary).replace("'"," ")
+            continue
+        if col==5:
+            date=sheet.cell_value(cRow,col)
+            continue
 
     #Except: Code withoud pdf
     #Build the json by row            
@@ -68,9 +78,9 @@ def processRow(browser,strSearch,row):
     #Insert information to cassandra
     lsRes=bd.cassandraBDProcess(json_sentencia)
     if lsRes[0]:
-        print('Sentencia added:',str(fileNumber))
+        writeLogAndConsole(log_Dir,'log_excelcjf.txt','Sentencia added:',str(fileNumber))
     else:
-        print('Keep going...sentencia existed:',str(fileNumber))
+        writeLogAndConsole(log_Dir,'log_excelcjf.txt','Keep going...sentencia existed:',str(fileNumber)
 
             #End Except: Code withoud pdf    
         """

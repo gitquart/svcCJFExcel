@@ -8,11 +8,20 @@ import cassandraSent as bd
 import xlrd
 
 excel_directory='C:\\Users\\1098350515\\Documents\\cjfexcel'
+log_Dir='C:\\Users\\1098350515\\Documents\\'
 msj=''    
 #Get the list
-for fileName in os.listdir(excel_directory):
-    print(excel_directory+'\\'+fileName)
-    wb = xlrd.open_workbook(excel_directory+'\\'+fileName)
-    sheet = wb.sheet_by_index(0)
-    # For row 0 and column 0
-    print(sheet.cell_value(3, 0))
+lsDir=os.listdir(excel_directory)
+if len(lsDir)>0:
+    for fileName in os.listdir(excel_directory):
+        tool.writeLogAndConsole(log_Dir,'log_excelcjf.txt','Now reading: '+fileName)
+        wb = xlrd.open_workbook(excel_directory+'\\'+fileName)
+        sheet = wb.sheet_by_index(0)
+        for cRow in range(3,sheet.nrows):
+            tool.processRow(cRow,sheet)        
+        tool.writeLogAndConsole(log_Dir,'log_excelcjf.txt','-----File done------')
+        os.sys.exit(0) 
+else:
+    tool.writeLogAndConsole(log_Dir,'log_excelcjf.txt','---Hey, the folder is empty, please add excel files-----')
+    os.sys.exit(0) 
+                   
