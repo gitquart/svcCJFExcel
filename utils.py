@@ -80,7 +80,7 @@ def processRow(cRow,sheet):
     if lsRes[0]:
         writeLogAndConsole(log_Dir,'log_excelcjf.txt','Sentencia added:',str(fileNumber))
     else:
-        writeLogAndConsole(log_Dir,'log_excelcjf.txt','Keep going...sentencia existed:',str(fileNumber)
+        writeLogAndConsole(log_Dir,'log_excelcjf.txt','Keep going...sentencia existed:',str(fileNumber))
 
             #End Except: Code withoud pdf    
         """
