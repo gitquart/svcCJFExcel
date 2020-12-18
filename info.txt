@@ -1,0 +1,24 @@
+Base tutorial: http://thepythoncorner.com/dev/how-to-create-a-windows-service-in-python/
+
+pip install pywin32
+
+Steps to install service:
+
+1) Open a ms dos terminal as administrator
+2) Go to the folder where main.py is located
+3) Type "pyhon svcCJF.py install", you should see in terminal "Service installed..."
+4) Type for debug "python svcCJF.py debug"
+
+
+If error 1053 appears when starting service, add the following lines to System path (environment variables):
+
+PATHS: 
+C:\Users\1098350515\AppData\Local\Programs\Python\Python38
+C:\Users\1098350515\AppData\Local\Programs\Python\Python38\lib\site-packages\win32\
+C:\Users\1098350515\AppData\Local\Programs\Python\Python38\Lib\site-packages\pywin32_system32
+C:\Users\1098350515\AppData\Local\Programs\Python\Python38\Scripts
+
+Instalación en computadora de Jesús:
+
+1) Se instalaron todos los módulos uno por uno.
+2)Poner los PATHS en variables del sistema (Variables de entorno)
