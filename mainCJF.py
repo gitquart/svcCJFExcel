@@ -24,6 +24,11 @@ def maincjf():
                     
             tool.writeLogAndConsole(log_Dir,'log_excelcjf.txt','-----File done------')
             shutil.move(excel_directory+'\\'+fileName,done_dir)
+        lsDir=os.listdir(excel_directory)
+        if len(lsDir)==0:
+            tool.writeLogAndConsole(log_Dir,'log_excelcjf.txt','---Hey, I am done with the folder, no files remaining, baby-----')
+            os.sys.exit(0)
+
     else:
         tool.writeLogAndConsole(log_Dir,'log_excelcjf.txt','---Hey, the folder is empty, please add excel files-----')
         os.sys.exit(0) 
