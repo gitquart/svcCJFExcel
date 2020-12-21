@@ -52,6 +52,8 @@ def processRow(cRow,sheet):
             continue
         if col==5:
             date=sheet.cell_value(cRow,col)
+            if date=='':
+                date='1000/01/01'
             continue
 
     #Except: Code withoud pdf

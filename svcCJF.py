@@ -3,6 +3,7 @@ from SMWinservice import SMWinservice
 import mainCJF
 import utils as tool
 import sys
+import traceback
 log_Dir='C:\\Users\\1098350515\\Documents\\'
 
 class svcCJF(SMWinservice):
@@ -21,7 +22,7 @@ class svcCJF(SMWinservice):
         try:
             mainCJF.maincjf()
         except:
-            tool.writeLogAndConsole(log_Dir,'log_excelcjf.txt',str(sys.exc_info()[0]))          
+            tool.writeLogAndConsole(log_Dir,'log_excelcjf.txt',str(traceback.print_exc()))          
 
 if __name__ == '__main__':
     svcCJF.parse_command_line()
