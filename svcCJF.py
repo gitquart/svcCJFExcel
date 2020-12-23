@@ -4,7 +4,10 @@ import mainCJF
 import utils as tool
 import sys
 import traceback
-log_Dir='C:\\Users\\1098350515\\Documents\\'
+from InternalControl import cInternalControl
+
+objControl=cInternalControl()
+log_Dir=objControl.log_Dir
 
 class svcCJF(SMWinservice):
     _svc_name_ = "svcCJF_Excel"
