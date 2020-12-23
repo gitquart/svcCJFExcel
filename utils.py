@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 from textwrap import wrap
+from InternalControl import cInternalControl
 import cassandraSent as bd
 import PyPDF2
 import uuid
@@ -9,8 +10,12 @@ import json
 import os
 import sys
 
-download_dir='C:\\Users\\1098350515\\Downloads'
-log_Dir='C:\\Users\\1098350515\\Documents\\'
+
+objControl=cInternalControl()
+excel_directory=objControl.excel_dir
+done_dir=objControl.done_dir
+log_Dir=objControl.log_Dir
+download_dir=objControl.download_dir
 
 def devuelveElemento(xPath, browser):
     cEle=0

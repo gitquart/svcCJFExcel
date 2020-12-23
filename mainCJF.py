@@ -7,10 +7,12 @@ import requests
 import cassandraSent as bd
 import xlrd
 import shutil
+from InternalControl import cInternalControl
 
-excel_directory='C:\\Users\\1098350515\\Documents\\cjfexcel'
-done_dir='C:\\Users\\1098350515\\Documents\\done'
-log_Dir='C:\\Users\\1098350515\\Documents\\'
+objControl=cInternalControl()
+excel_directory=objControl.excel_dir
+done_dir=objControl.done_dir
+log_Dir=objControl.log_Dir
 msj=''    
 def maincjf():
     lsDir=os.listdir(excel_directory)
