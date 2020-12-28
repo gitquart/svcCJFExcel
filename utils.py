@@ -89,42 +89,7 @@ def processRow(cRow,sheet):
     else:
         writeLogAndConsole(log_Dir,'log_excelcjf.txt','Keep going...sentencia existed:'+str(fileNumber))
 
-            #End Except: Code withoud pdf    
-        """
-        else:
-            #This is the xpath of the link : //*[@id="grdSentencias_ctl00__'+str(row)+'"]/td['+str(col)+']/a
-            #This find_element method works!
-            link=browser.find_element(By.XPATH,'//*[@id="grdSentencias_ctl00__'+str(row)+'"]/td['+str(col)+']/a')
-            link.click()
-            #Wait until the second window is open and the pdf is downloaded (or not downloaded)
-            time.sleep(20)
-            if len(browser.window_handles)>1:
-                #window_handles changes always
-                #If the pdf browser page opens, then the record should be done in Cassandra
-                main_window=browser.window_handles[0]
-                pdf_window=browser.window_handles[1]
-                browser.switch_to_window(pdf_window)
-
-                #Something goes here
-
-                browser.close()
-                browser.switch_to_window(main_window)
-
-            else:
-                print('The pdf window was not opened',strSearch)
-                browser.quit()
-                sys.exit(0)     
-        """        
-                
-                #Here goes "Except: Code withoud pdf"
-
-                #Check if a pdf exists  
-                                     
-                #for file in os.listdir(download_dir):
-                #    pdfDownloaded=True
-                #    processPDF(json_sentencia,lsRes)
-                #    os.remove(download_dir+'\\'+file)
-                    
+        
 
 """
 readPDF is done to read a PDF no matter the content, can be image or UTF-8 text

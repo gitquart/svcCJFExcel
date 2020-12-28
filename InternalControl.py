@@ -6,3 +6,4 @@ class cInternalControl:
     table='impi_docs_master'
     log_Dir='C:\\Users\\1098350515\\Documents\\'
     download_dir='C:\\Users\\1098350515\\Downloads'
+    pdfOn=False
