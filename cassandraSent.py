@@ -28,9 +28,12 @@ def cassandraBDProcess(json_sentencia):
     session.default_timeout=70
     row=''
     fileNumber=json_sentencia['filenumber']
+    jurisrev=json_sentencia['jurisdictionalreviewer']
+    filetype=json_sentencia['filetype']
+    subject=json_sentencia['subject']
     #Check wheter or not the record exists, check by numberFile and date
     #Date in cassandra 2020-09-10T00:00:00.000+0000
-    querySt="select id from "+keyspace+".tbcourtdecisioncjf where filenumber='"+str(fileNumber)+"'  ALLOW FILTERING"
+    querySt="select id from "+keyspace+".tbcourtdecisioncjf where filenumber='"+str(fileNumber)+"' and jurisdictionalreviewer='"+str(jurisrev)+"' and filetype='"+str(filetype)+"' and subject='"+str(subject)+"'  ALLOW FILTERING"
                 
     future = session.execute_async(querySt)
     row=future.result()
